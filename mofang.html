@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #box{
+        display: grid;
+        grid-template-columns: repeat(8 ,100px) ;
+        grid-template-rows: repeat(8 ,100px) ;  
+        text-align: center;
+        line-height: 100px;
+    }
+    .item{
+        box-sizing: border-box;
+        height: 100px;
+        width: 100px;
+        border: 2px solid #333;
+        background-color: brown;
+    }
+    .r{
+        background-color: red;
+    }
+    .b{
+        background-color: rgb(96, 15, 228);
+    }
+    .w{
+        background-color: rgb(87, 87, 87);
+    }
+    .g{
+        background-color: green;
+    }
+    .y{
+        background-color: yellow;
+    }
+    .o{
+        background-color: orange;
+    }
+    .nocolor{
+        background-color: white;
+    }
+    button{
+        background-color: tomato;
+        height: 60px;
+        width: 120px;
+        font-weight: 600;
+        font-size: 20px;
+        color: rgb(4, 62, 82);
+    }
+</style>
+<body>
+
+    <div id="box">
+        
+    </div>
+    <div>
+        <section>
+            <h1>整体翻转按钮</h1>
+            <button id="down">向下翻转</button>
+            <button id="up">向上翻转</button>
+            <button id="right">向右翻转</button>
+            <button id="left">向左翻转</button>
+            <h1>竖直方向翻转按钮</h1>
+            <button id="rotateDown">向下翻转</button>
+            <button id="rotateUp">向上翻转</button>
+            <button id="rotateDown2">向下翻转</button>
+            <button id="rotateUp2">向上翻转</button>
+            <h1>水平方向翻转按钮</h1>
+            <button id="rotateLeft">向左翻转</button>
+            <button id="rotateRight">向右翻转</button>
+            <button id="rotateLeft2">向左翻转</button>
+            <button id="rotateRight2">向右翻转</button>
+        </section>
+        
+    </div>
+    <script>
+        let box = document.getElementById("box")
+        // console.log(box)
+        let tt = null
+        , b1 = 'b1'
+        , b2 = 'b2'
+        , b3 = 'b3'
+        , b4 = 'b4'
+        , w1 = 'w1'
+        , w2 = 'w2'
+        , w3 = 'w3'
+        , w4 = 'w4'
+        , r1 = 'r1'
+        , r2 = 'r2'
+        , r3 = 'r3'
+        , r4 = 'r4'
+        , g1 = 'g1'
+        , g2 = 'g2'
+        , g3 = 'g3'
+        , g4 = 'g4'
+        , y1 = 'y1'
+        , y2 = 'y2'
+        , y3 = 'y3'
+        , y4 = 'y4'
+        , o1 = 'o1'
+        , o2 = 'o2'
+        , o3 = 'o3'
+        , o4 = 'o4';
+
+        let array = [
+            [tt,tt,tt,tt,b1,b2,tt,tt],
+            [tt,tt,tt,tt,b3,b4,tt,tt],
+            [o1,o2,w1,w2,r1,r2,g1,g2],
+            [o3,o4,w3,w4,r3,r4,g3,g4],
+            [tt,tt,tt,tt,y1,y2,tt,tt],
+            [tt,tt,tt,tt,y3,y4,tt,tt],
+            [tt,tt,tt,tt,o1,o2,tt,tt],
+            [tt,tt,tt,tt,o3,o4,tt,tt],
+        ];
+        //绘制矩阵
+        function draw(){
+            var myNode = document.getElementById("box");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+            let r=array.length
+            let l=array[0].length
+            for(let i=0;i<r;i++){
+                for(let j=0;j<l;j++){
+                    // console.log(i+'----'+j)
+                    let div = document.createElement('div')
+                    div.textContent = array[i][j]
+                    let item = array[i][j];
+                    let color = 'nocolor'
+                    if(item!=null){
+                        color = item[0]
+                    }
+                    div.setAttribute('class','item '+color)
+                    box.appendChild(div)
+                }
+            }
+        }
+        draw()
+
+
+        //向下翻转魔方
+        function down(){
+            //获取相关位置信息
+            let tempAll  = [[],[],[],[],[],[],[],[]];
+            for(let a=0;a<8;a++){
+                    for(let j=4;j<6;j++){
+                        let x = j-4
+                        tempAll[a][x]=array[a][j]
+                       
+                    }
+            }
+            // 改变array位置信息
+            for(let a=0;a<8;a++){
+                for(let i=0;i<2;i++){
+                    let x = a+2
+                    if(a<=5){
+                        array[a][i+4] = tempAll[x][i];
+                    }else{
+                        array[a][i+4] = tempAll[a-6][i];
+                    }
+                }
+            }
+            for(let i=0;i<2;i++){
+                let lefti = i+2
+                let bottomi = i+6
+                for(let j=0;j<2;j++){
+                    let bottomj = j+4
+                    array[lefti][j] = array[bottomi][bottomj]
+                }
+            }
+            draw()
+        }
+
+
+        //向上翻转魔方
+        function up(){
+            //获取相关位置信息
+            let tempAll  = [[],[],[],[],[],[],[],[]];
+            for(let a=0;a<8;a++){
+                    for(let j=4;j<6;j++){
+                        let x = j-4
+                        tempAll[a][x]=array[a][j]
+                       
+                    }
+            }
+            // 改变array位置信息
+            for(let a=0;a<8;a++){
+                for(let i=0;i<2;i++){
+                    let x = a+6
+                    if(a<=1){
+                        array[a][i+4] = tempAll[x][i];
+                    }else{
+                        array[a][i+4] = tempAll[a-2][i];
+                    }
+                }
+            }
+            for(let i=0;i<2;i++){
+                let lefti = i+2
+                let bottomi = i+6
+                for(let j=0;j<2;j++){
+                    let bottomj = j+4
+                    array[lefti][j] = array[bottomi][bottomj]
+                }
+            }
+            draw()
+        }
+
+
+        //向左翻转
+        function left(){
+            let i = 2
+            while(i--){
+                array[2].unshift(array[2].pop()) ;
+                array[3].unshift(array[3].pop()) ;
+                // console.log(array)
+            }
+            for(let i=0; i<2; i++){
+                let lefti = i+2
+                let bottomi = i+6
+                for(let j=0;j<2;j++){
+                    let bottomj = j+4
+                    array[bottomi][bottomj] = array[lefti][j]
+                }
+            }
+            draw()
+        }
+
+        //向右翻转
+        function right(){
+            let i = 2
+            while(i--){
+                array[2].push(array[2].shift()) ;
+                array[3].push(array[3].shift()) ;
+                // console.log(array)
+            }
+            for(let i=0; i<2; i++){
+                let lefti = i+2
+                let bottomi = i+6
+                for(let j=0;j<2;j++){
+                    let bottomj = j+4
+                    array[bottomi][bottomj] = array[lefti][j]
+                }
+            }
+            draw()
+        }
+
+
+        //垂直第一纵列
+        function cloumn1up(){
+            //获取相关位置信息
+            let tempAll  = [];
+            for(let a=0;a<8;a++){
+                tempAll[a]=array[a][4]     
+            }
+            // 改变array位置信息
+            for(let a=0;a<8;a++){
+                let x = a+2
+                if(a<=5){
+                    array[a][4] = tempAll[x];
+                }else{
+                    array[a][4] = tempAll[a-6];
+                }
+            }
+            for(let i=6;i<8;i++){
+                let x = i-4
+                array[x][0] = array[i][4]
+            }
+            draw()
+        }
+
+        function cloumn1down(){
+            //获取相关位置信息
+            let tempAll = [];
+            for(let a=0;a<8;a++){
+                tempAll[a]=array[a][4]     
+            }
+
+            //唯一和cloumn1up不同的地方====================需优化==================
+            for(let a=0;a<8;a++){
+                let x = a+6
+                if(a<=1){
+                    array[a][4] = tempAll[x];
+                }else{
+                    array[a][4] = tempAll[a-2];
+                }
+            }
+            for(let i=6;i<8;i++){
+                let x = i-4
+                array[x][0] = array[i][4]
+            }
+            draw()
+        }
+
+        //垂直第二纵列
+        function cloumn2up(){
+            //获取相关位置信息
+            let tempAll  = [];
+            for(let a=0;a<8;a++){
+                tempAll[a]=array[a][5]     
+            }
+            // 改变array位置信息
+            for(let a=0;a<8;a++){
+                let x = a+2
+                if(a<=5){
+                    array[a][5] = tempAll[x];
+                }else{
+                    array[a][5] = tempAll[a-6];
+                }
+            }
+            for(let i=6;i<8;i++){
+                let x = i-4
+                array[x][1] = array[i][5]
+            }
+            draw()
+        }
+
+        function cloumn2down(){
+            //获取相关位置信息
+            let tempAll  = [];
+            for(let a=0;a<8;a++){
+                tempAll[a]=array[a][5]     
+            }
+
+            //唯一和cloumn1up不同的地方====================需优化==================
+            for(let a=0;a<8;a++){
+                let x = a+6
+                if(a<=1){
+                    array[a][5] = tempAll[x];
+                }else{
+                    array[a][5] = tempAll[a-2];
+                }
+            }
+            for(let i=6;i<8;i++){
+                let x = i-4
+                array[x][1] = array[i][5]
+            }
+            draw()
+        }
+
+        //水平第一行
+        function row1left(){
+            let i = 2
+            while(i--){
+                array[2].push(array[2].shift()) ;
+            }
+            for(let i=0; i<2; i++){
+                let lefti = i+2
+                let bottomi = i+6
+                for(let j=0;j<2;j++){
+                    let bottomj = j+4
+                    array[bottomi][bottomj] = array[lefti][j]
+                }
+            }
+            draw()
+        }
+
+        function row1right(){
+            let i = 2
+            while(i--){
+                array[2].unshift(array[2].pop()) ;
+            }
+            for(let i=0; i<2; i++){
+                let lefti = i+2
+                let bottomi = i+6
+                for(let j=0;j<2;j++){
+                    let bottomj = j+4
+                    array[bottomi][bottomj] = array[lefti][j]
+                }
+            }
+            draw()            
+        }
+
+        //水平第二行
+        function row2left(){
+            let i = 2
+            while(i--){
+                array[3].push(array[3].shift()) ;
+            }
+            for(let i=0; i<2; i++){
+                let lefti = i+2
+                let bottomi = i+6
+                for(let j=0;j<2;j++){
+                    let bottomj = j+4
+                    array[bottomi][bottomj] = array[lefti][j]
+                }
+            }
+            draw()
+        }
+
+        function row2right(){
+            let i = 2
+            while(i--){
+                array[3].unshift(array[3].pop()) ;
+            }
+            for(let i=0; i<2; i++){
+                let lefti = i+2
+                let bottomi = i+6
+                for(let j=0;j<2;j++){
+                    let bottomj = j+4
+                    array[bottomi][bottomj] = array[lefti][j]
+                }
+            }
+            draw()            
+        }
+ 
+        document.getElementById('down').addEventListener('click',down);
+        document.getElementById('up').addEventListener('click',up)
+        document.getElementById('left').addEventListener('click',left)
+        document.getElementById('right').addEventListener('click',right)
+
+        //垂直第一纵列up down
+        document.getElementById('rotateUp').addEventListener('click',cloumn1up)
+        document.getElementById('rotateDown').addEventListener('click',cloumn1down)
+
+        //垂直第二纵列up down
+        document.getElementById('rotateUp2').addEventListener('click',cloumn2up)
+        document.getElementById('rotateDown2').addEventListener('click',cloumn2down)
+        
+        //水平第一行left right
+        document.getElementById('rotateLeft').addEventListener('click',row1left)
+        document.getElementById('rotateRight').addEventListener('click',row1right)
+        
+        //水平第二行left right
+        document.getElementById('rotateLeft2').addEventListener('click',row2left)
+        document.getElementById('rotateRight2').addEventListener('click',row2right)
+
+
+        // console.log(array)
+        
+    </script>
+</body>
+</html>
