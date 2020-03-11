@@ -111,8 +111,8 @@
         let array = [
             [tt,tt,tt,tt,b1,b2,tt,tt],
             [tt,tt,tt,tt,b3,b4,tt,tt],
-            [o1,o2,w1,w2,r1,r2,g1,g2],
-            [o3,o4,w3,w4,r3,r4,g3,g4],
+            [o4,o3,w1,w2,r1,r2,g1,g2],
+            [o2,o1,w3,w4,r3,r4,g3,g4],
             [tt,tt,tt,tt,y1,y2,tt,tt],
             [tt,tt,tt,tt,y3,y4,tt,tt],
             [tt,tt,tt,tt,o1,o2,tt,tt],
@@ -166,14 +166,34 @@
                     }
                 }
             }
-            for(let i=0;i<2;i++){
-                let lefti = i+2
-                let bottomi = i+6
-                for(let j=0;j<2;j++){
-                    let bottomj = j+4
-                    array[lefti][j] = array[bottomi][bottomj]
-                }
-            }
+            //同步左虚部
+            array[2][0] = array[7][5]
+            array[2][1] = array[7][4]
+            array[3][0] = array[6][5]
+            array[3][1] = array[6][4]
+            //翻转左侧面
+            let TempL = [[],[]]
+            TempL[0][0] = array[2][2]
+            TempL[0][1] = array[2][3]
+            TempL[1][0] = array[3][2]
+            TempL[1][1] = array[3][3]
+
+            array[2][2] = TempL[0][1]
+            array[2][3] = TempL[1][1]
+            array[3][2] = TempL[0][0]
+            array[3][3] = TempL[1][0]
+
+            //翻转右侧面
+            let TempR = [[],[]]
+            TempR[0][0] = array[2][6]
+            TempR[0][1] = array[2][7]
+            TempR[1][0] = array[3][6]
+            TempR[1][1] = array[3][7]
+
+            array[2][6] = TempR[1][0]
+            array[2][7] = TempR[0][0]
+            array[3][6] = TempR[1][1]
+            array[3][7] = TempR[0][1]
             draw()
         }
 
@@ -200,14 +220,34 @@
                     }
                 }
             }
-            for(let i=0;i<2;i++){
-                let lefti = i+2
-                let bottomi = i+6
-                for(let j=0;j<2;j++){
-                    let bottomj = j+4
-                    array[lefti][j] = array[bottomi][bottomj]
-                }
-            }
+            //同步左虚部
+            array[2][0] = array[7][5]
+            array[2][1] = array[7][4]
+            array[3][0] = array[6][5]
+            array[3][1] = array[6][4]
+            //旋转左侧面
+            let TempL = [[],[]]
+            TempL[0][0] = array[2][2]
+            TempL[0][1] = array[2][3]
+            TempL[1][0] = array[3][2]
+            TempL[1][1] = array[3][3]
+
+            array[2][2] = TempL[1][0]
+            array[2][3] = TempL[0][0]
+            array[3][2] = TempL[1][1]
+            array[3][3] = TempL[0][1]
+
+            //旋转右侧面
+            let TempR = [[],[]]
+            TempR[0][0] = array[2][6]
+            TempR[0][1] = array[2][7]
+            TempR[1][0] = array[3][6]
+            TempR[1][1] = array[3][7]
+
+            array[2][6] = TempR[0][1]
+            array[2][7] = TempR[1][1]
+            array[3][6] = TempR[0][0]
+            array[3][7] = TempR[1][0]
             draw()
         }
 
@@ -228,6 +268,33 @@
                     array[bottomi][bottomj] = array[lefti][j]
                 }
             }
+            //同步下虚部
+            array[6][4] = array[3][1]
+            array[6][5] = array[3][0]
+            array[7][4] = array[2][1]
+            array[7][5] = array[2][0]
+            //旋转上面T
+            let TempT = [[],[]]
+            TempT[0][0] = array[0][4]
+            TempT[0][1] = array[0][5]
+            TempT[1][0] = array[1][4]
+            TempT[1][1] = array[1][5]
+
+            array[0][4] = TempT[0][1]
+            array[0][5] = TempT[1][1]
+            array[1][4] = TempT[0][0]
+            array[1][5] = TempT[1][0]
+            //旋转上面B
+            let TempB = [[],[]]
+            TempB[0][0] = array[4][4]
+            TempB[0][1] = array[4][5]
+            TempB[1][0] = array[5][4]
+            TempB[1][1] = array[5][5]
+
+            array[4][4] = TempB[1][0]
+            array[4][5] = TempB[0][0]
+            array[5][4] = TempB[1][1]
+            array[5][5] = TempB[0][1]
             draw()
         }
 
@@ -247,6 +314,33 @@
                     array[bottomi][bottomj] = array[lefti][j]
                 }
             }
+            //同步下虚部
+            array[6][4] = array[3][1]
+            array[6][5] = array[3][0]
+            array[7][4] = array[2][1]
+            array[7][5] = array[2][0]
+            //旋转上面T
+            let TempT = [[],[]]
+            TempT[0][0] = array[0][4]
+            TempT[0][1] = array[0][5]
+            TempT[1][0] = array[1][4]
+            TempT[1][1] = array[1][5]
+
+            array[0][4] = TempT[1][0]
+            array[0][5] = TempT[0][0]
+            array[1][4] = TempT[1][1]
+            array[1][5] = TempT[0][1]
+            //旋转上面B
+            let TempB = [[],[]]
+            TempB[0][0] = array[4][4]
+            TempB[0][1] = array[4][5]
+            TempB[1][0] = array[5][4]
+            TempB[1][1] = array[5][5]
+
+            array[4][4] = TempB[0][1]
+            array[4][5] = TempB[1][1]
+            array[5][4] = TempB[0][0]
+            array[5][5] = TempB[1][0]
             draw()
         }
 
@@ -267,10 +361,20 @@
                     array[a][4] = tempAll[a-6];
                 }
             }
-            for(let i=6;i<8;i++){
-                let x = i-4
-                array[x][0] = array[i][4]
-            }
+            //同步左虚部
+            array[2][1] = array[7][4]
+            array[3][1] = array[6][4]
+            //翻转左侧面
+            let TempL = [[],[]]
+            TempL[0][0] = array[2][2]
+            TempL[0][1] = array[2][3]
+            TempL[1][0] = array[3][2]
+            TempL[1][1] = array[3][3]
+
+            array[2][2] = TempL[0][1]
+            array[2][3] = TempL[1][1]
+            array[3][2] = TempL[0][0]
+            array[3][3] = TempL[1][0]
             draw()
         }
 
@@ -290,10 +394,20 @@
                     array[a][4] = tempAll[a-2];
                 }
             }
-            for(let i=6;i<8;i++){
-                let x = i-4
-                array[x][0] = array[i][4]
-            }
+            //同步左虚部
+            array[2][1] = array[7][4]
+            array[3][1] = array[6][4]
+            //旋转左侧面
+            let TempL = [[],[]]
+            TempL[0][0] = array[2][2]
+            TempL[0][1] = array[2][3]
+            TempL[1][0] = array[3][2]
+            TempL[1][1] = array[3][3]
+
+            array[2][2] = TempL[1][0]
+            array[2][3] = TempL[0][0]
+            array[3][2] = TempL[1][1]
+            array[3][3] = TempL[0][1]
             draw()
         }
 
@@ -313,10 +427,21 @@
                     array[a][5] = tempAll[a-6];
                 }
             }
-            for(let i=6;i<8;i++){
-                let x = i-4
-                array[x][1] = array[i][5]
-            }
+            //同步左虚部
+            array[2][0] = array[7][5]
+            array[3][0] = array[6][5]
+            //翻转右侧面
+            let TempR = [[],[]]
+            TempR[0][0] = array[2][6]
+            TempR[0][1] = array[2][7]
+            TempR[1][0] = array[3][6]
+            TempR[1][1] = array[3][7]
+
+            array[2][6] = TempR[1][0]
+            array[2][7] = TempR[0][0]
+            array[3][6] = TempR[1][1]
+            array[3][7] = TempR[0][1]
+            draw()
             draw()
         }
 
@@ -336,10 +461,20 @@
                     array[a][5] = tempAll[a-2];
                 }
             }
-            for(let i=6;i<8;i++){
-                let x = i-4
-                array[x][1] = array[i][5]
-            }
+            //同步左虚部
+            array[2][0] = array[7][5]
+            array[3][0] = array[6][5]
+            //旋转右侧面
+            let TempR = [[],[]]
+            TempR[0][0] = array[2][6]
+            TempR[0][1] = array[2][7]
+            TempR[1][0] = array[3][6]
+            TempR[1][1] = array[3][7]
+
+            array[2][6] = TempR[0][1]
+            array[2][7] = TempR[1][1]
+            array[3][6] = TempR[0][0]
+            array[3][7] = TempR[1][0]
             draw()
         }
 
@@ -349,14 +484,20 @@
             while(i--){
                 array[2].push(array[2].shift()) ;
             }
-            for(let i=0; i<2; i++){
-                let lefti = i+2
-                let bottomi = i+6
-                for(let j=0;j<2;j++){
-                    let bottomj = j+4
-                    array[bottomi][bottomj] = array[lefti][j]
-                }
-            }
+            //同步虚部
+            array[7][4] = array[2][1]
+            array[7][5] = array[2][0]
+            //旋转上面T
+            let TempT = [[],[]]
+            TempT[0][0] = array[0][4]
+            TempT[0][1] = array[0][5]
+            TempT[1][0] = array[1][4]
+            TempT[1][1] = array[1][5]
+
+            array[0][4] = TempT[1][0]
+            array[0][5] = TempT[0][0]
+            array[1][4] = TempT[1][1]
+            array[1][5] = TempT[0][1]
             draw()
         }
 
@@ -365,14 +506,20 @@
             while(i--){
                 array[2].unshift(array[2].pop()) ;
             }
-            for(let i=0; i<2; i++){
-                let lefti = i+2
-                let bottomi = i+6
-                for(let j=0;j<2;j++){
-                    let bottomj = j+4
-                    array[bottomi][bottomj] = array[lefti][j]
-                }
-            }
+            //同步虚部
+            array[7][4] = array[2][1]
+            array[7][5] = array[2][0]
+            //旋转上面T
+            let TempT = [[],[]]
+            TempT[0][0] = array[0][4]
+            TempT[0][1] = array[0][5]
+            TempT[1][0] = array[1][4]
+            TempT[1][1] = array[1][5]
+
+            array[0][4] = TempT[0][1]
+            array[0][5] = TempT[1][1]
+            array[1][4] = TempT[0][0]
+            array[1][5] = TempT[1][0]
             draw()            
         }
 
@@ -382,14 +529,20 @@
             while(i--){
                 array[3].push(array[3].shift()) ;
             }
-            for(let i=0; i<2; i++){
-                let lefti = i+2
-                let bottomi = i+6
-                for(let j=0;j<2;j++){
-                    let bottomj = j+4
-                    array[bottomi][bottomj] = array[lefti][j]
-                }
-            }
+            //同步虚部
+            array[6][4] = array[3][1]
+            array[6][5] = array[3][0]
+            //旋转上面B
+            let TempB = [[],[]]
+            TempB[0][0] = array[4][4]
+            TempB[0][1] = array[4][5]
+            TempB[1][0] = array[5][4]
+            TempB[1][1] = array[5][5]
+
+            array[4][4] = TempB[0][1]
+            array[4][5] = TempB[1][1]
+            array[5][4] = TempB[0][0]
+            array[5][5] = TempB[1][0]
             draw()
         }
 
@@ -398,14 +551,20 @@
             while(i--){
                 array[3].unshift(array[3].pop()) ;
             }
-            for(let i=0; i<2; i++){
-                let lefti = i+2
-                let bottomi = i+6
-                for(let j=0;j<2;j++){
-                    let bottomj = j+4
-                    array[bottomi][bottomj] = array[lefti][j]
-                }
-            }
+            //同步虚部
+            array[6][4] = array[3][1]
+            array[6][5] = array[3][0]
+            //旋转上面B
+            let TempB = [[],[]]
+            TempB[0][0] = array[4][4]
+            TempB[0][1] = array[4][5]
+            TempB[1][0] = array[5][4]
+            TempB[1][1] = array[5][5]
+
+            array[4][4] = TempB[1][0]
+            array[4][5] = TempB[0][0]
+            array[5][4] = TempB[1][1]
+            array[5][5] = TempB[0][1]
             draw()            
         }
  
@@ -429,10 +588,6 @@
         //水平第二行left right
         document.getElementById('rotateLeft2').addEventListener('click',row2left)
         document.getElementById('rotateRight2').addEventListener('click',row2right)
-
-
-        // console.log(array)
-        
     </script>
 </body>
 </html>
