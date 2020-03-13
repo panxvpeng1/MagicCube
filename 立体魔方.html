@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .wutai{
+        width: 900px;
+        height: 600px;
+        border: 1px solid;
+        margin: 0 auto;
+        perspective: 9500px;
+        perspective-origin: 50% 50%;
+    }
+    .wutai ul{
+        width: 200px;
+        height: 200px;
+        position: relative;
+        margin: 0 auto;
+        top: 150px;
+        transform-style:preserve-3d;
+    }
+    /* .wutai:hover ul{
+        transform: rotateY(36000000deg);
+        transition: all 1000000s linear;
+    } */
+    .wutai li{
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        text-align: center;
+        line-height: 200px;
+        font-size: 20px;
+        color: white;
+        transition: all;
+    }
+    li:nth-child(1){
+        background: rgba(0,225,225,0.6);
+        transform:  translateZ(-100px) translateX(-100px) translateY(-200px) rotateX(90deg);
+    }
+    li:nth-child(2){
+        background: rgba(225,0,0,0.6);
+        transform: translateZ(-100px) translateX(100px) translateY(-200px) rotateX(90deg);
+    }
+    li:nth-child(3){
+        background: rgba(225,0,225,0.6);
+        transform:  translateZ(100px) translateX(100px) translateY(-200px) rotateX(90deg)
+    }
+    li:nth-child(4){
+        background: rgba(0,0,225,0.6);
+        transform:   translateZ(100px) translateX(-100px) translateY(-200px) rotateX(90deg)
+    }
+    li:nth-child(5){
+        background: rgba(255,0,0,0.6);
+        transform:  translateZ(200px) translateY(-100px) translateX(-100px);
+    }
+    li:nth-child(6){
+        background: rgba(0,255,0,0.6);
+        transform: translateZ(200px) translateY(-100px) translateX(100px);
+    }
+    li:nth-child(7){
+        background: rgba(225,225,0,0.6);
+        transform: translateZ(200px) translateY(100px) translateX(-100px);
+    }
+    li:nth-child(8){
+        background: rgba(225,0,225,0.6);
+        transform: translateZ(200px) translateY(100px) translateX(100px);
+    }
+    
+    li:nth-child(9){
+        background: rgba(0,225,225,0.6);
+        transform:  translateZ(100px) translateX(-100px) translateY(200px) rotateX(90deg);
+    }
+    li:nth-child(10){
+        background: rgba(225,225,0,0.6);
+        transform:  translateZ(100px) translateX(100px) translateY(200px) rotateX(90deg);
+    }
+    li:nth-child(11){
+        background: rgba(225,0,225,0.6);
+        transform:  translateZ(-100px) translateX(-100px) translateY(200px) rotateX(90deg);
+        
+    }
+    li:nth-child(12){
+        background: rgba(0,225,225,0.6);
+        transform:  translateZ(-100px) translateX(100px) translateY(200px) rotateX(90deg);
+    }
+
+    li:nth-child(13){
+        background: rgba(255,0,0,0.6);
+        transform: translateZ(-200px) translateY(100px) translateX(-100px);
+    }
+    li:nth-child(14){
+        background: rgba(0,255,0,0.6);
+        transform: translateZ(-200px) translateY(100px) translateX(100px);
+    }
+    li:nth-child(15){
+        background: rgba(225,225,0,0.6);
+        transform:  translateZ(-200px) translateY(-100px) translateX(-100px);
+    }
+    li:nth-child(16){
+        background: rgba(225,0,225,0.6);
+        transform:  translateZ(-200px) translateY(-100px) translateX(100px);
+    }
+    /* right */
+    li:nth-child(17){
+        background: rgba(255,0,0,0.6);
+        transform: rotateY(90deg) translateZ(200px) translateY(-100px) translateX(-100px);
+    }
+    li:nth-child(18){
+        background: rgba(0,255,0,0.6);
+        transform: rotateY(90deg) translateZ(200px) translateY(-100px) translateX(100px);
+    }
+    li:nth-child(19){
+        background: rgba(225,225,0,0.6);
+        transform: rotateY(90deg) translateZ(200px) translateY(100px) translateX(-100px);
+    }
+    li:nth-child(20){
+        background: rgba(225,0,225,0.6);
+        transform: rotateY(90deg) translateZ(200px) translateY(100px) translateX(100px);
+    }
+
+    /* left */
+    li:nth-child(21){
+        background: rgba(255,0,0,0.6);
+        transform: rotateY(-90deg) translateZ(200px) translateY(-100px) translateX(-100px);
+    }
+    li:nth-child(22){
+        background: rgba(0,255,0,0.6);
+        transform: rotateY(-90deg) translateZ(200px) translateY(-100px) translateX(100px);
+    }
+    li:nth-child(23){
+        background: rgba(225,225,0,0.6);
+        transform: rotateY(-90deg) translateZ(200px) translateY(100px) translateX(-100px);
+    }
+    li:nth-child(24){
+        background: rgba(225,0,225,0.6);
+        transform: rotateY(-90deg) translateZ(200px) translateY(100px) translateX(100px);
+    }
+    </style>
+</head>
+<body>
+    <div class="wutai">
+        <ul>
+            <li class="item item1">1</li>
+            <li class="item item2">2</li>
+            <li class="item item3">3</li>
+            <li class="item item4">4</li>
+            <li class="item item5">5</li>
+            <li class="item item6">6</li>
+            <li class="item item7">7</li>
+            <li class="item item8">8</li>
+            <li class="item item9">9</li>
+            <li class="item item10">10</li>
+            <li class="item item11">11</li>
+            <li class="item item12">12</li>
+            <li class="item item13">13</li>
+            <li class="item item14">14</li>
+            <li class="item item15">15</li>
+            <li class="item item16">16</li>
+            <li class="item item17">17</li>
+            <li class="item item18">18</li>
+            <li class="item item19">19</li>
+            <li class="item item20">20</li>
+            <li class="item item21">21</li>
+            <li class="item item22">22</li>
+            <li class="item item23">23</li>
+            <li class="item item24">24</li>
+            <!-- <li class="item item24" style="font-size: 100px;">24</li> -->
+        </ul>
+    </div>
+    <button id="btn">按钮</button>
+    <script>
+
+        (function(window){
+        let ul = document.querySelector("ul")
+        let wutai = document.querySelector(".wutai")
+      
+        let originX = 0;
+        let originY = 0;
+
+        let scroll = 0;
+
+        //监听鼠标按键按下
+        window.addEventListener("mousedown",function(e){
+            originX = e.screenX;
+            originY = e.screenY;
+            key = true;
+            console.log(originX+'---'+originY)
+
+            //移动方法
+            function m(e){
+                let nowX = e.screenX;
+                let nowY = e.screenY;
+
+                let x = ((nowX - originX));
+                let y = (-(nowY - originY));
+
+                // wutai.style.perspectiveOrigin =  `${x }${y}`;
+                ul.style.transform = ` rotateX(${y}deg) rotateY(${x}deg)`;
+                console.log('move //'+x+'---'+y) 
+            }
+
+            //监听鼠标移动
+            let move = window.addEventListener("mousemove",m,false);
+
+            //监听鼠标抬起
+            window.addEventListener("mouseup",function(e){
+                console.log('up')
+                window.removeEventListener('mousemove',m,false)
+            });
+
+        });
+   
+        let wheel = window.addEventListener('wheel',function(e){
+            scroll +=e.wheelDelta
+            wutai.style.perspective = `${scroll+600}px`;
+            console.log(scroll)
+        })
+ 
+        }(window))  
+
+        document.getElementById('btn').addEventListener('click',(e)=>{
+            e.stopPropagation();
+            let lis = document.getElementsByTagName('li');
+            for(let i=0;i<4;i++){
+                lis[i].style.rotateY = '-90deg'
+            }
+        },true)
+    </script>
+</body>
+</html>
